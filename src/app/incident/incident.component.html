@@ -1,0 +1,72 @@
+<div class="box box-solid oppo-list">
+  <div class="box-group" >
+      <div  class="panel box viewed" >
+          <div id="collapseViewed">
+            
+              <h4 class="box-header box-title">
+                  <span>
+                      <b> Incident Name </b>
+                  </span>
+                  <span>
+                    <input type="text" class="margin-left-10" />
+                  </span>
+              </h4>
+              <div class="box-body table-responsive">
+                  <table class="table table-bordered table-hover table-striped">
+                      <thead>
+                          <tr>
+                              <th>
+                                <span data-toggle="tooltip" title="Sort by Name">Select</span>
+                              </th>
+                              <th>
+                                <span data-toggle="tooltip" title="Sort by Trip Name">Entity</span>
+                              </th>
+                              <th>
+                                <span data-toggle="tooltip" title="Sort by Trip Name">Operator</span>
+                              </th>
+                              <th>
+                                  <span data-toggle="tooltip" title="Sort by Trip Name">Value</span>
+                              </th>
+                              <th>
+                                Action
+                              </th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let item of items; let i=index">
+                              <td class="td-name">
+                                  <div class="btn-group">
+                                      <button type="button" (click)="item.operatorStatus = 'AND'" class="btn btn-info">AND</button>
+                                      <button type="button" (click)="item.operatorStatus = 'OR'" class="btn btn-info">OR</button>
+                                  </div>
+                              </td>
+                              <td class="td-name">
+                                  <select [(ngModel)]="item.entity" class="form-control">
+                                    <option *ngFor="let entity of item.entityList" value="{{entity}}" >{{entity}}</option>
+                                  </select>
+                              </td>
+                              <td class="td-name">
+                                  <select [(ngModel)]="item.operator" class="form-control">
+                                    <option *ngFor="let operate of item.operatorList" value="{{operate}}" >{{operate}}</option>
+                                  </select>
+                              </td>
+                              <td>
+                                <input type="text" class="form-control" [(ngModel)]="item.value">
+                              </td>
+                              <td>
+                                  <button class="btn btn-primary" (click)="addRow(i)"><i class="fa fa-plus"></i></button>
+                                  <button class="btn btn-primary margin-left-10" [hidden]="i === 0" (click)="cancelRow(i)"><i class="fa fa-minus"></i></button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="box-footer align-right">
+                <button type="submit" class="btn btn-default ">Reset</button>
+                <button type="submit" (click)="onSubmit()" class="btn btn-primary margin-left-10">Submit</button>
+              </div>
+            
+          </div>
+      </div>
+  </div>
+</div>

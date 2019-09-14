@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row" *ngFor="let template of templates; let i=index;">
+      <div class="col-md-1">
+        <div class="form-group">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox">
+                {{ template.incident }}
+              </label>
+            </div>
+          </div>
+      </div>
+      <div class="col-md-5">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h4 class="box-title">{{ template.subject }}</h4>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+              <div class="box-body">
+                <p>
+                  <span>
+                      <input type="text" [(ngModel)]="template.body.name" >
+                  </span>
+                </p>
+                <p>
+                  <span>
+                      <input type="text" [(ngModel)]="template.body.plainText" >
+                  </span>
+                </p>
+                <p>
+                  <span>
+                      <input type="text" [(ngModel)]="template.body.content" >
+                  </span>
+                </p>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                 <h4> {{ template.footer }} </h4>
+              </div>
+              <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <div class="col-md-6">
+            <div *ngIf="template" class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">{{ template.subject }}</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <div class="form-group">
+                    <p class="p-body">
+                        {{ template.body.name }} {{ template.body.plainText }} {{ template.body.content }}
+                    </p>
+                  </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                  <h3>
+                      {{ template.footer }}
+                  </h3>
+                </div>
+              </div>
+        </div>
+  </div>
+</div>
